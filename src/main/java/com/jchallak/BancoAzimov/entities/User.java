@@ -28,7 +28,7 @@ public class User {
     @Column(name = "criado_em")
     private LocalDateTime criadoEm;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ContaBancaria> contasBancarias = new HashSet<>();
 
     @ManyToMany
@@ -107,5 +107,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<ContaBancaria> getContasBancarias() {
+        return contasBancarias;
+    }
+
+    public void setContasBancarias(Set<ContaBancaria> contasBancarias) {
+        this.contasBancarias = contasBancarias;
     }
 }

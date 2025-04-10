@@ -1,4 +1,4 @@
-package com.jchallak.BancoAzimov.Utils;
+package com.jchallak.BancoAzimov.utils;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

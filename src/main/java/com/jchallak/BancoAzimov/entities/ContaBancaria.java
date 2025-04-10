@@ -21,17 +21,21 @@ public class ContaBancaria {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "contaOrigem")
-    private List<Transacao> transacoesEnviadas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "contaDestino")
-    private List<Transacao> transacoesRecebidas = new ArrayList<>();
+    @OneToMany(mappedBy = "contaOrigem", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Transacao> transacoesOrigem = new ArrayList<>();
 
-    public ContaBancaria(Long id, String numeroConta, Double saldo, User user) {
+    @OneToMany(mappedBy = "contaDestino", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Transacao> transacoesDestino = new ArrayList<>();
+
+
+    public ContaBancaria(Long id, String numeroConta, Double saldo, User user, List<Transacao> transacoesOrigem, List<Transacao> transacoesDestino) {
         this.id = id;
         this.numeroConta = numeroConta;
         this.saldo = saldo;
         this.user = user;
+        this.transacoesOrigem = transacoesOrigem;
+        this.transacoesDestino = transacoesDestino;
     }
 
     public ContaBancaria() {
@@ -67,6 +71,22 @@ public class ContaBancaria {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Transacao> getTransacoesOrigem() {
+        return transacoesOrigem;
+    }
+
+    public void setTransacoesOrigem(List<Transacao> transacoesOrigem) {
+        this.transacoesOrigem = transacoesOrigem;
+    }
+
+    public List<Transacao> getTransacoesDestino() {
+        return transacoesDestino;
+    }
+
+    public void setTransacoesDestino(List<Transacao> transacoesDestino) {
+        this.transacoesDestino = transacoesDestino;
     }
 
 
