@@ -1,11 +1,6 @@
 package com.jchallak.BancoAzimov.dtos;
 
-import com.jchallak.BancoAzimov.entities.Transacao;
-import com.jchallak.BancoAzimov.entities.User;
-import jakarta.persistence.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.jchallak.BancoAzimov.dtos.userDTOs.UserMinDTO;
 
 public class ContaBancariaDTO {
 

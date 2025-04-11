@@ -1,11 +1,4 @@
-package com.jchallak.BancoAzimov.dtos;
-
-import com.jchallak.BancoAzimov.entities.ContaBancaria;
-import com.jchallak.BancoAzimov.entities.Role;
-
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+package com.jchallak.BancoAzimov.dtos.userDTOs;
 
 public class UserMinDTO {
 

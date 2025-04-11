@@ -1,22 +1,23 @@
 package com.jchallak.BancoAzimov.controllers;
 
-import com.jchallak.BancoAzimov.dtos.UserDTO;
-import com.jchallak.BancoAzimov.services.AdminCBService;
-import com.jchallak.BancoAzimov.services.AdminTransService;
+import com.jchallak.BancoAzimov.dtos.userDTOs.UserDTO;
 import com.jchallak.BancoAzimov.services.AdminUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/admin/users")
+@PreAuthorize("hasRole('ADMIN')")
 public class AdminUserController {
 
     @Autowired
     private AdminUserService adminService;
+
 
 
     @GetMapping

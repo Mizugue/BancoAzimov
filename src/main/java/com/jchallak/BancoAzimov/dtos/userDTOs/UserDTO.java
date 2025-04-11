@@ -1,11 +1,9 @@
-package com.jchallak.BancoAzimov.dtos;
+package com.jchallak.BancoAzimov.dtos.userDTOs;
 
-import com.jchallak.BancoAzimov.entities.ContaBancaria;
+import com.jchallak.BancoAzimov.dtos.ContaBancariaMinDTO;
 import com.jchallak.BancoAzimov.entities.Role;
 import com.jchallak.BancoAzimov.entities.User;
-import jakarta.persistence.*;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;

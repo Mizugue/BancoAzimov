@@ -4,8 +4,8 @@ INSERT INTO tb_role (id, authority) VALUES (2, 'ROLE_USER');
 
 
 
-INSERT INTO tb_user (id, email, username, senha, ativo, criado_em) VALUES (1, 'admin@bancoazimov.com', 'admin', '123', true, '2023-01-01 10:00:00'::timestamp);
-INSERT INTO tb_user (id, email, username, senha, ativo, criado_em) VALUES (2, 'cliente1@email.com', 'cliente1', '123', true, '2023-01-02 11:30:00'::timestamp);
+INSERT INTO tb_user (id, email, username, senha, ativo, criado_em) VALUES (1, 'admin@bancoazimov.com', 'admin', '$2a$12$wHievheq5D7zYg0DVibKnepnf8/IvfbEr8bMPLxv/jwNX7ipVNd/6', true, '2023-01-01 10:00:00'::timestamp);
+INSERT INTO tb_user (id, email, username, senha, ativo, criado_em) VALUES (2, 'cliente1@email.com', 'cliente1', '$2a$12$wHievheq5D7zYg0DVibKnepnf8/IvfbEr8bMPLxv/jwNX7ipVNd/6', true, '2023-01-02 11:30:00'::timestamp);
 
 
 

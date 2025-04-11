@@ -31,7 +31,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ContaBancaria> contasBancarias = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "tb_usuario_role",
             joinColumns = @JoinColumn(name = "usuario_id"),
@@ -116,4 +116,20 @@ public class User {
     public void setContasBancarias(Set<ContaBancaria> contasBancarias) {
         this.contasBancarias = contasBancarias;
     }
+
+    public boolean hasRole(String roleName){
+        for (Role role : roles){
+            if (role.getAuthority().equals(roleName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addRole(Role role){
+        roles.add(role);
+    }
+
+
+
 }
