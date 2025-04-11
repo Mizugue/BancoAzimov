@@ -4,24 +4,21 @@ import com.jchallak.BancoAzimov.dtos.ContaBancariaDTO;
 import com.jchallak.BancoAzimov.dtos.TransacaoDTO;
 import com.jchallak.BancoAzimov.dtos.UserDTO;
 import com.jchallak.BancoAzimov.entities.ContaBancaria;
-import com.jchallak.BancoAzimov.entities.Role;
+import com.jchallak.BancoAzimov.entities.Transacao;
 import com.jchallak.BancoAzimov.entities.User;
 import com.jchallak.BancoAzimov.repositories.CBRepository;
 import com.jchallak.BancoAzimov.repositories.RoleRepository;
 import com.jchallak.BancoAzimov.repositories.TransacaoRepository;
 import com.jchallak.BancoAzimov.repositories.UserRepository;
 import com.jchallak.BancoAzimov.services.exceptions.ResourceNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class AdminServiceImpl implements AdminCBService, AdminTransService, AdminUserService{
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
@@ -30,7 +27,7 @@ public class UserServiceImpl implements UserService{
     private final RoleRepository roleRepository;
 
     @Autowired
-    public UserServiceImpl (UserRepository userRepository, ModelMapper modelMapper, CBRepository cbRepository, TransacaoRepository transacaoRepository, RoleRepository roleRepository){
+    public AdminServiceImpl(UserRepository userRepository, ModelMapper modelMapper, CBRepository cbRepository, TransacaoRepository transacaoRepository, RoleRepository roleRepository){
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.cbRepository = cbRepository;
@@ -64,7 +61,6 @@ public class UserServiceImpl implements UserService{
         userRepository.save(user);
         return modelMapper.map(user, UserDTO.class);
     }
-
     @Override
     public String deleteUser(Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User com Id " + id + " inexistente"));
@@ -83,15 +79,13 @@ public class UserServiceImpl implements UserService{
     }
     @Override
     public ContaBancariaDTO saveAccount(ContaBancariaDTO contaBancariaDTO) {
-        return null;
-    }
-    @Override
-    public ContaBancariaDTO updateAccount(ContaBancariaDTO contaBancariaDTO) {
-        return null;
+        return modelMapper.map(cbRepository.save(modelMapper.map(contaBancariaDTO, ContaBancaria.class)), ContaBancariaDTO.class);
     }
     @Override
     public String deleteAccount(Long id) {
-        return "";
+        ContaBancaria contaBancaria = cbRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Conta com Id " + id + " inexistente"));
+        cbRepository.deleteById(id);
+        return "Conta " + contaBancaria.getNumeroConta() + " deletada com sucesso! ";
     }
 
 
@@ -104,17 +98,12 @@ public class UserServiceImpl implements UserService{
         return transacaoRepository.findById(id).map(x -> modelMapper.map(x, TransacaoDTO.class)).orElseThrow(() -> new ResourceNotFoundException("Transacao com Id " + id + " inexistente"));
     }
     @Override
-    public TransacaoDTO saveTransaction(TransacaoDTO transacaoDTO) {
-        return null;
+    public String deleteTransaction(Long id) {
+        Transacao transacao = transacaoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Transacao com Id " + id + " inexistente"));
+        transacaoRepository.deleteById(id);
+        return "Transacao de " + transacao.getTransacao() + " com id " + transacao.getId() + " deletada com sucesso! ";
     }
-    @Override
-    public TransacaoDTO updateTransaction(TransacaoDTO transacaoDTO) {
-        return null;
-    }
-    @Override
-    public TransacaoDTO deleteTransaction(Long id) {
-        return null;
-    }
+
 
 
 }
