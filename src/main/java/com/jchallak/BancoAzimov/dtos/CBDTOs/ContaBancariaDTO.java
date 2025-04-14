@@ -1,4 +1,4 @@
-package com.jchallak.BancoAzimov.dtos;
+package com.jchallak.BancoAzimov.dtos.CBDTOs;
 
 import com.jchallak.BancoAzimov.dtos.userDTOs.UserMinDTO;
 

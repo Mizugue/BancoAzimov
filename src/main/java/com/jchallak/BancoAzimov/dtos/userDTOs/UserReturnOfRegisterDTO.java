@@ -1,6 +1,6 @@
 package com.jchallak.BancoAzimov.dtos.userDTOs;
 
-import com.jchallak.BancoAzimov.dtos.ContaBancariaMinDTO;
+import com.jchallak.BancoAzimov.dtos.CBDTOs.ContaBancariaMinDTO;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;

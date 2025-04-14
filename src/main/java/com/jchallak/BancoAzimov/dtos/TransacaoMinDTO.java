@@ -4,6 +4,7 @@ package com.jchallak.BancoAzimov.dtos;
 
 import com.jchallak.BancoAzimov.entities.ContaBancaria;
 import com.jchallak.BancoAzimov.entities.TipoTransacao;
+import com.jchallak.BancoAzimov.entities.Transacao;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -17,6 +18,14 @@ public class TransacaoMinDTO {
     private String descricao;
 
     public TransacaoMinDTO() {
+    }
+
+    public TransacaoMinDTO(Transacao transacao){
+        this.id = transacao.getId();
+        this.valor = transacao.getValor();
+        this.dataHora = transacao.getDataHora();
+        this.transacao = transacao.getTransacao();
+        this.descricao = transacao.getDescricao();
     }
 
     public TransacaoMinDTO(Long id, Double valor, LocalDateTime dataHora, TipoTransacao transacao, String descricao) {

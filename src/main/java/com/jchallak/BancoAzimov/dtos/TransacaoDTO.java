@@ -1,8 +1,7 @@
 package com.jchallak.BancoAzimov.dtos;
 
-import com.jchallak.BancoAzimov.entities.ContaBancaria;
+import com.jchallak.BancoAzimov.dtos.CBDTOs.ContaBancariaMinDTO;
 import com.jchallak.BancoAzimov.entities.TipoTransacao;
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 

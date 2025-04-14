@@ -1,9 +1,4 @@
-package com.jchallak.BancoAzimov.dtos;
-
-import com.jchallak.BancoAzimov.entities.Transacao;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.jchallak.BancoAzimov.dtos.CBDTOs;
 
 public class ContaBancariaMinDTO {
 

@@ -1,8 +1,7 @@
 package com.jchallak.BancoAzimov.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +20,7 @@ public class User {
     @Column(unique = true)
     private String username;
 
+    @JsonIgnore
     private String senha;
 
     private Boolean ativo;

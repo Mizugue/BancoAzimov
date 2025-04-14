@@ -1,6 +1,6 @@
 package com.jchallak.BancoAzimov.dtos.userDTOs;
 
-import com.jchallak.BancoAzimov.dtos.ContaBancariaMinDTO;
+import com.jchallak.BancoAzimov.dtos.CBDTOs.ContaBancariaMinDTO;
 import com.jchallak.BancoAzimov.entities.Role;
 import com.jchallak.BancoAzimov.entities.User;
 import org.modelmapper.ModelMapper;

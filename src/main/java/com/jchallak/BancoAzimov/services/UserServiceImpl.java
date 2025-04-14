@@ -1,5 +1,6 @@
 package com.jchallak.BancoAzimov.services;
 
+
 import com.jchallak.BancoAzimov.dtos.userDTOs.UserDTO;
 import com.jchallak.BancoAzimov.dtos.userDTOs.UserRegisterDTO;
 import com.jchallak.BancoAzimov.dtos.userDTOs.UserReturnOfRegisterDTO;
@@ -16,13 +17,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+
+
 
 
 @Service
@@ -33,14 +31,18 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
+    private final AuthenticatedUserService authenticatedUserService;
+
+
 
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, RoleRepository roleRepository, AuthenticatedUserService authenticatedUserService) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
+        this.authenticatedUserService = authenticatedUserService;
 
     }
 
@@ -60,6 +62,27 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         user.setSenha(passwordEncoder.encode(userDTO.getSenha()));
         return modelMapper.map(userRepository.save(user), UserReturnOfRegisterDTO.class);
     }
+
+    @Override
+    public UserDTO getMe() {
+        User user = authenticatedUserService.authenticated();
+        return modelMapper.map(user, UserDTO.class);
+    }
+
+    @Override
+    public String newPassword(String newPassword, String oldPassword) {
+        User user = authenticatedUserService.authenticated();
+        if ((!passwordEncoder.matches(oldPassword, user.getSenha()))){
+            return "Senha antiga incorreta!";
+
+        }
+        user.setSenha(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+        return "Nova senha salva com sucesso!";
+    }
+
+
+
 
 
 }
