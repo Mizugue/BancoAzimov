@@ -10,11 +10,13 @@ Sistema de backend bancário desenvolvido com **Spring Boot** e autenticação v
 - JPA / Hibernate
 - PostgreSQL
 - Maven
+- ModelMapper
+- Validation
 
 ## 📦 Funcionalidades
 
 ### Usuário Comum
-- Criar conta bancária
+- Criar e manipular contas bancárias
 - Realizar transferências
 - Consultar saldo e extrato
 - Alterar senha
