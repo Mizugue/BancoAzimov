@@ -1,6 +1,6 @@
 package com.jchallak.BancoAzimov.services.admin;
 
-import com.jchallak.BancoAzimov.dtos.TransacaoDTO;
+import com.jchallak.BancoAzimov.dtos.transDTOs.TransacaoDTO;
 
 import java.util.List;
 

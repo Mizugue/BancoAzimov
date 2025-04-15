@@ -1,39 +1,31 @@
-package com.jchallak.BancoAzimov.dtos;
+package com.jchallak.BancoAzimov.dtos.transDTOs;
 
-
-
-import com.jchallak.BancoAzimov.entities.ContaBancaria;
+import com.jchallak.BancoAzimov.dtos.CBDTOs.ContaBancariaMinDTO;
 import com.jchallak.BancoAzimov.entities.TipoTransacao;
-import com.jchallak.BancoAzimov.entities.Transacao;
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-public class TransacaoMinDTO {
+public class TransacaoDTO {
 
     private Long id;
     private Double valor;
     private LocalDateTime dataHora;
     private TipoTransacao transacao;
     private String descricao;
+    private ContaBancariaMinDTO contaOrigem;
+    private ContaBancariaMinDTO contaDestino;
 
-    public TransacaoMinDTO() {
+    public TransacaoDTO() {
     }
 
-    public TransacaoMinDTO(Transacao transacao){
-        this.id = transacao.getId();
-        this.valor = transacao.getValor();
-        this.dataHora = transacao.getDataHora();
-        this.transacao = transacao.getTransacao();
-        this.descricao = transacao.getDescricao();
-    }
-
-    public TransacaoMinDTO(Long id, Double valor, LocalDateTime dataHora, TipoTransacao transacao, String descricao) {
+    public TransacaoDTO(Long id, Double valor, LocalDateTime dataHora, TipoTransacao transacao, String descricao, ContaBancariaMinDTO contaOrigem, ContaBancariaMinDTO contaDestino) {
         this.id = id;
         this.valor = valor;
         this.dataHora = dataHora;
         this.transacao = transacao;
         this.descricao = descricao;
+        this.contaOrigem = contaOrigem;
+        this.contaDestino = contaDestino;
     }
 
     public Long getId() {
@@ -76,5 +68,19 @@ public class TransacaoMinDTO {
         this.descricao = descricao;
     }
 
+    public ContaBancariaMinDTO getContaOrigem() {
+        return contaOrigem;
+    }
 
+    public void setContaOrigem(ContaBancariaMinDTO contaOrigem) {
+        this.contaOrigem = contaOrigem;
+    }
+
+    public ContaBancariaMinDTO getContaDestino() {
+        return contaDestino;
+    }
+
+    public void setContaDestino(ContaBancariaMinDTO contaDestino) {
+        this.contaDestino = contaDestino;
+    }
 }

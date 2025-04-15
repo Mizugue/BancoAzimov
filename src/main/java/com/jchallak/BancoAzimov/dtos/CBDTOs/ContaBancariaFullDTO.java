@@ -1,6 +1,6 @@
 package com.jchallak.BancoAzimov.dtos.CBDTOs;
 
-import com.jchallak.BancoAzimov.dtos.TransacaoMinDTO;
+import com.jchallak.BancoAzimov.dtos.transDTOs.TransacaoMinDTO;
 
 
 import java.util.ArrayList;

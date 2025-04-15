@@ -1,9 +1,7 @@
 package com.jchallak.BancoAzimov.controllers;
 
-import com.jchallak.BancoAzimov.dtos.CBDTOs.ContaBancariaDTO;
 import com.jchallak.BancoAzimov.dtos.CBDTOs.ContaBancariaFullDTO;
 import com.jchallak.BancoAzimov.dtos.CBDTOs.ContaBancariaMinDTO;
-import com.jchallak.BancoAzimov.dtos.TransacaoMinDTO;
 import com.jchallak.BancoAzimov.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

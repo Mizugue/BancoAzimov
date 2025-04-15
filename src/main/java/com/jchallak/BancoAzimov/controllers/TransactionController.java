@@ -1,13 +1,12 @@
 package com.jchallak.BancoAzimov.controllers;
 
-import com.jchallak.BancoAzimov.dtos.TransacaoMinDTO;
+import com.jchallak.BancoAzimov.dtos.transDTOs.TransacaoDTO;
+import com.jchallak.BancoAzimov.dtos.transDTOs.TransacaoMinDTO;
 import com.jchallak.BancoAzimov.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,8 +22,19 @@ public class TransactionController {
     @GetMapping
     public ResponseEntity<List<TransacaoMinDTO>> getMyAccounts(){
         return new ResponseEntity<>(transactionService.getMyTransactions(), HttpStatus.OK);
-
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<TransacaoDTO> getMyTransaction(@PathVariable Long id){
+        return new ResponseEntity<>(transactionService.getMyTransaction(id), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/{n}")
+    public ResponseEntity<TransacaoDTO> newTransaction(@RequestBody TransacaoDTO transacaoDTO, @PathVariable String n){
+        return new ResponseEntity<>(transactionService.newTransaction(transacaoDTO, n), HttpStatus.CREATED);
+    }
+
+
 
 
 }

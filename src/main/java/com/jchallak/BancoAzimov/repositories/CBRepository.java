@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface CBRepository extends JpaRepository<ContaBancaria, Long> {
     Long deleteByNumeroConta(String numeroConta);
+    Optional<ContaBancaria> findByNumeroConta(String numeroConta);
 }
