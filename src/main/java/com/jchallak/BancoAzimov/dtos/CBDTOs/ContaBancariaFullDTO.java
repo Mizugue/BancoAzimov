@@ -1,30 +1,20 @@
 package com.jchallak.BancoAzimov.dtos.CBDTOs;
 
 import com.jchallak.BancoAzimov.dtos.TransacaoMinDTO;
-import com.jchallak.BancoAzimov.entities.ContaBancaria;
-import com.jchallak.BancoAzimov.entities.Transacao;
-import com.jchallak.BancoAzimov.entities.User;
-import jakarta.persistence.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class ContaBancariaFullDTO {
 
     private Long id;
     private String numeroConta;
     private Double saldo;
-    private List<Transacao> transacoesOrigem = new ArrayList<>();
-    private List<Transacao> transacoesDestino = new ArrayList<>();
+    private List<TransacaoMinDTO> transacoesOrigem = new ArrayList<>();
+    private List<TransacaoMinDTO> transacoesDestino = new ArrayList<>();
 
-    public void fromEntity (ContaBancaria contaBancaria){
-        this.id = contaBancaria.getId();
-        this.numeroConta = contaBancaria.getNumeroConta();
-        this.saldo = contaBancaria.getSaldo();
-        this.transacoesOrigem = contaBancaria.getTransacoesOrigem().stream().map(x -> new TransacaoMinDTO(x));
-        this.transacoesDestino = contaBancaria.getTransacoesDestino().stream().map(x -> new TransacaoMinDTO(x));
-    }
 
     public ContaBancariaFullDTO() {
     }
@@ -53,19 +43,20 @@ public class ContaBancariaFullDTO {
         this.saldo = saldo;
     }
 
-    public List<Transacao> getTransacoesOrigem() {
+    public List<TransacaoMinDTO> getTransacoesOrigem() {
         return transacoesOrigem;
     }
 
-    public void setTransacoesOrigem(List<Transacao> transacoesOrigem) {
+    public void setTransacoesOrigem(List<TransacaoMinDTO> transacoesOrigem) {
         this.transacoesOrigem = transacoesOrigem;
     }
 
-    public List<Transacao> getTransacoesDestino() {
+    public List<TransacaoMinDTO> getTransacoesDestino() {
         return transacoesDestino;
     }
 
-    public void setTransacoesDestino(List<Transacao> transacoesDestino) {
+    public void setTransacoesDestino(List<TransacaoMinDTO> transacoesDestino) {
         this.transacoesDestino = transacoesDestino;
     }
 }
+

@@ -1,7 +1,7 @@
-package com.jchallak.BancoAzimov.controllers;
+package com.jchallak.BancoAzimov.controllers.admin;
 
 import com.jchallak.BancoAzimov.dtos.CBDTOs.ContaBancariaDTO;
-import com.jchallak.BancoAzimov.services.AdminCBService;
+import com.jchallak.BancoAzimov.services.admin.AdminCBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.jchallak.BancoAzimov.services;
+package com.jchallak.BancoAzimov.services.admin;
 
 import com.jchallak.BancoAzimov.dtos.CBDTOs.ContaBancariaDTO;
 import com.jchallak.BancoAzimov.dtos.TransacaoDTO;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AdminServiceImpl implements AdminCBService, AdminTransService, AdminUserService{
+public class AdminServiceImpl implements AdminCBService, AdminTransService, AdminUserService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;

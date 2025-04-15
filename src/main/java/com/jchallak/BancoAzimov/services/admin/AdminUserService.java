@@ -1,4 +1,4 @@
-package com.jchallak.BancoAzimov.services;
+package com.jchallak.BancoAzimov.services.admin;
 
 import com.jchallak.BancoAzimov.dtos.userDTOs.UserDTO;
 

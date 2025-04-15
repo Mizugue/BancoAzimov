@@ -10,4 +10,6 @@ import java.util.List;
 public interface AccountService {
     List<ContaBancariaMinDTO> getMyAccounts();
     ContaBancariaFullDTO getMyAccount(String n);
+    String newAccount(ContaBancariaMinDTO dto);
+    String deleteAccount(String n);
 }
