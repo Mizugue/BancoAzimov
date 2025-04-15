@@ -31,4 +31,5 @@ Sistema de backend bancário desenvolvido com **Spring Boot** e autenticação v
 - Autenticação via OAuth2 
 - Perfis com controle de acesso (Admin/User)
 - Password encoder (BCrypt)
-
+---
+![img.png](img.png)

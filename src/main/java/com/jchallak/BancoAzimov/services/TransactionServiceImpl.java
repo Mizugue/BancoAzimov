@@ -1,6 +1,6 @@
 package com.jchallak.BancoAzimov.services;
 
-import com.jchallak.BancoAzimov.dtos.CBDTOs.ContaBancariaMinDTO;
+
 import com.jchallak.BancoAzimov.dtos.transDTOs.TransacaoDTO;
 import com.jchallak.BancoAzimov.dtos.transDTOs.TransacaoMinDTO;
 import com.jchallak.BancoAzimov.entities.ContaBancaria;
