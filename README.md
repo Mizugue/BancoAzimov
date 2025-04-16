@@ -12,6 +12,7 @@ Sistema de backend bancário desenvolvido com **Spring Boot** e autenticação v
 - Maven
 - ModelMapper
 - Validation
+- Actuator
 
 ## 📦 Funcionalidades
 
