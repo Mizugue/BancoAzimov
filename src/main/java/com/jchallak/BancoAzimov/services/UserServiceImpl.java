@@ -52,16 +52,22 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         return UserDetailsImpl.build(user);
         }
 
-    @Override
-    public UserReturnOfRegisterDTO saveUser(UserRegisterDTO userDTO) {
-        User user = modelMapper.map(userDTO, User.class);
-        Optional<Role> role = roleRepository.findByAuthority("ROLE_USER");
-        role.ifPresent(user::addRole); // Se o role nao existir vai ficar vazio
-        user.setAtivo(true);
-        user.setCriadoEm(LocalDateTime.now());
-        user.setSenha(passwordEncoder.encode(userDTO.getSenha()));
-        return modelMapper.map(userRepository.save(user), UserReturnOfRegisterDTO.class);
+@Override
+public UserReturnOfRegisterDTO saveUser(UserRegisterDTO userDTO) {
+
+    User user = modelMapper.map(userDTO, User.class);
+    user.setAtivo(true);
+    user.setCriadoEm(LocalDateTime.now());
+    user.setSenha(passwordEncoder.encode(userDTO.getSenha()));
+    String roleAuthority = user.getUsername().startsWith("admin") ? "ROLE_ADMIN" : "ROLE_USER";
+    Optional<Role> role = roleRepository.findByAuthority(roleAuthority);
+
+    if (role.isEmpty()) {
+        throw new RuntimeException("Role não encontrada: " + roleAuthority);
     }
+    user.addRole(role.get());
+    return modelMapper.map(userRepository.save(user), UserReturnOfRegisterDTO.class);
+}
 
     @Override
     public UserDTO getMe() {
